@@ -27,15 +27,17 @@ namespace vidly.Controllers
             return Content("id=" + id);
         }
         //optional parameters can be given in an action
-        public ActionResult Index()
+        public ActionResult Index(int? pageIndex, string sortBy)
         {
-            var movie = new Movie()
-            {
-                Name = "shrek",
-                
-            };
-            return Content("IndexPage");
+            if (!pageIndex.HasValue)
+                pageIndex = 1;
+            if (string.IsNullOrWhiteSpace(sortBy))
+                sortBy = "Name";
+
+            return Content(String.Format("pageIndex = {0}&sortby={1}", pageIndex, sortBy));
             
         }
     }
 }
+//note: movies?pageIndex=1&sortBy=ReleaseDate can be given as a parameter in the URL to change the pageIndex and sortby Values for the last 
+//Index ActionResult method here. But cannot be embedded inside the URL as it requires a custom route that will include two parameters.
