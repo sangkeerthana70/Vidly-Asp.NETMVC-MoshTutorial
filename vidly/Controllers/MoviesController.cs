@@ -20,12 +20,26 @@ namespace vidly.Controllers
                 Id = 12345
             };
             return View(movie);
+            //return new ViewResult();
+            //return Content("Hello World!");
+            //return HttpNotFound();
+            //return new EmptyResult();
+            //return RedirectToAction("Index", "Home", new { page = 1, sortBy = "name" });
         }
         //example of a parameter embedded in the URL
         public ActionResult Edit(int id)
         {
             return Content("id=" + id);
         }
+
+        //create action for the custom route in RouteConfig.cs
+        public ActionResult ByReleaseDate(int year, int month)
+        {
+            return Content(year + "/" + month);
+            }
+
+
+
         //optional parameters can be given in an action
         public ActionResult Index(int? pageIndex, string sortBy)
         {
