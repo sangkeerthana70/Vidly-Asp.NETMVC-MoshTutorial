@@ -25,7 +25,11 @@ namespace vidly.Controllers
             {
                 //object initialization syntax
                 new Customer { Name = "Anamika"},
-                new Customer { Name = "Athmika"}
+                new Customer { Name = "Athmika"},
+                new Customer { Name = "Daisy"},
+                new Customer { Name = "Violet"},
+                new Customer { Name = "Lily" },
+                new Customer { Name = "Petunia"}
             };
             //create a view Model Object
             var viewModel = new RandomMovieViewModel
