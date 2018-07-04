@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using vidly.Models;//refers to namespace in models folder which has the class Movie
+using vidly.ViewModels;
 
 namespace vidly.Controllers
 {
@@ -19,7 +20,21 @@ namespace vidly.Controllers
                 Name = "shrek",
                 Id = 12345
             };
-            return View(movie);
+            //list of customers
+            var customers = new List<Customer>
+            {
+                //object initialization syntax
+                new Customer { Name = "Anamika"},
+                new Customer { Name = "Athmika"}
+            };
+            //create a view Model Object
+            var viewModel = new RandomMovieViewModel
+            {
+                Movie = movie,
+                Customers = customers
+
+            };
+            return View(viewModel);
             //return new ViewResult();
             //return Content("Hello World!");
             //return HttpNotFound();
