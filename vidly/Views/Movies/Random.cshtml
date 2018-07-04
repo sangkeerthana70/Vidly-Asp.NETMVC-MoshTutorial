@@ -6,6 +6,9 @@
 }
 
 <h2>@Model.Movie.Name</h2>
-<h2>@Model.Customers</h2>
+@foreach (var customer in  Model.Customers)
+    {
+        <p> @customer.Name </p>
+    }
 
 

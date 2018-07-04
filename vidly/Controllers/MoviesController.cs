@@ -51,14 +51,15 @@ namespace vidly.Controllers
         public ActionResult ByReleaseDate(int year, int month)
         {
             return Content(year + "/" + month);
-            }
+        }
         //apply route attribute by giving URL template in it.
-        [Route("movies/released/{year}/{month:regex(\\d{4}):range(1, 12)}")]
+       // [Route("movies/released/{year}/{month:regex(\\d{4}):range(1, 12)}")]
 
 
         //optional parameters can be given in an action
         public ActionResult Index(int? pageIndex, string sortBy)
         {
+            
             if (!pageIndex.HasValue)
                 pageIndex = 1;
             if (string.IsNullOrWhiteSpace(sortBy))

@@ -13,7 +13,7 @@ namespace vidly
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             //define custom routes using attributes for the corresponding action
-            routes.MapMvcAttributeRoutes();
+            //routes.MapMvcAttributeRoutes();
 
             /*
             //define custom routes which is a specific route and has to be defined first
