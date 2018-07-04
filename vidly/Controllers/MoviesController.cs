@@ -37,7 +37,8 @@ namespace vidly.Controllers
         {
             return Content(year + "/" + month);
             }
-
+        //apply route attribute by giving URL template in it.
+        [Route("movies/released/{year}/{month:regex(\\d{4}):range(1, 12)}")]
 
 
         //optional parameters can be given in an action
