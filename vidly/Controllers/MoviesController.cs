@@ -15,30 +15,22 @@ namespace vidly.Controllers
         public ActionResult Random()
         {
             //create an instance of movie model in Models/Movie.cs
-            var movie = new Movie()
+            var movies = new List<Movie>
             {
-                Name = "shrek",
-                Id = 12345
-            };
-            //list of customers
-            var customers = new List<Customer>
-            {
-                //object initialization syntax
-                new Customer { Name = "Anamika"},
-                new Customer { Name = "Athmika"},
-                new Customer { Name = "Daisy"},
-                new Customer { Name = "Violet"},
-                new Customer { Name = "Lily" },
-                new Customer { Name = "Petunia"}
+                new Movie { Id = 01, Name = "shrek" },
+                //Id = 12345
+                new Movie { Id = 02, Name = "Wall-e" }
             };
             //create a view Model Object
             var viewModel = new RandomMovieViewModel
             {
-                Movie = movie,
-                Customers = customers
+
+                Movie = movies
 
             };
             return View(viewModel);
+
+            
             //return new ViewResult();
             //return Content("Hello World!");
             //return HttpNotFound();

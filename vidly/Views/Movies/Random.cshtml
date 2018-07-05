@@ -5,11 +5,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @{ 
-    var className = Model.Customers.Count > 5 ? "popular" : null;
+    var className = Model.Customers.Count > 0 ? "popular" : null;
 
 }
 
-<h2 class="@className">@Model.Movie.Name</h2>
+<h2 class="@className">@Model.Movie.Count</h2>
 @if (Model.Customers.Count == 0)
 {
     <text>No one has rented this movie before.</text>
