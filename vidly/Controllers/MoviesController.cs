@@ -18,7 +18,6 @@ namespace vidly.Controllers
             var movies = new List<Movie>
             {
                 new Movie { Id = 01, Name = "shrek" },
-                //Id = 12345
                 new Movie { Id = 02, Name = "Wall-e" }
             };
             //create a view Model Object
