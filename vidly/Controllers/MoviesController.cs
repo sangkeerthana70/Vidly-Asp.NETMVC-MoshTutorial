@@ -12,7 +12,7 @@ namespace vidly.Controllers
     public class MoviesController : Controller
     {
         // GET: Movies/Random
-        public ActionResult Random()
+        public ActionResult Index()
         {
             //create an instance of movie model in Models/Movie.cs
             var movies = new List<Movie>
@@ -36,6 +36,16 @@ namespace vidly.Controllers
             //return new EmptyResult();
             //return RedirectToAction("Index", "Home", new { page = 1, sortBy = "name" });
         }
+
+        public ActionResult Display()
+        {
+            var movie = new Movie
+            {
+                new Movie { ReleaseDate = "Apr 22"},
+                new Movie { ReleaseYear = 2001 },
+                new Movie { Category =  "Fantasy/Adventure"}
+            }
+        }
         //example of a parameter embedded in the URL
         public ActionResult Edit(int id)
         {
@@ -50,19 +60,6 @@ namespace vidly.Controllers
         //apply route attribute by giving URL template in it.
        // [Route("movies/released/{year}/{month:regex(\\d{4}):range(1, 12)}")]
 
-
-        //optional parameters can be given in an action
-        public ActionResult Index(int? pageIndex, string sortBy)
-        {
-            
-            if (!pageIndex.HasValue)
-                pageIndex = 1;
-            if (string.IsNullOrWhiteSpace(sortBy))
-                sortBy = "Name";
-
-            return Content(String.Format("pageIndex = {0}&sortby={1}", pageIndex, sortBy));
-            
-        }
     }
 }
 //note: movies?pageIndex=1&sortBy=ReleaseDate can be given as a parameter in the URL to change the pageIndex and sortby Values for the last 

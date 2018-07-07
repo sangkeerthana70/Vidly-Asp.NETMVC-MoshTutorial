@@ -9,10 +9,10 @@ namespace vidly.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string ReleaseDate { get; set; }
+        public int ReleaseYear { get; set; }
+        public string Category { get; set; }
 
-        //public static implicit operator Movie(List<Movie> v)
-        //{
-        //    throw new NotImplementedException();
-        //}
+        
     }
 }

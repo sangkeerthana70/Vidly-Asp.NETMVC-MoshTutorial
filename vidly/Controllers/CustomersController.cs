@@ -11,7 +11,7 @@ namespace vidly.Controllers
     public class CustomersController : Controller
     {
         // GET: Customers
-        public ActionResult Random()
+        public ActionResult Index()
         {
             //list of customers
             var customers = new List<Customer>
