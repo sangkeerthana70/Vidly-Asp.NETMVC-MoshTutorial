@@ -1,7 +1,7 @@
 ﻿@model vidly.ViewModels.RandomMovieViewModel
 @{
 
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Display Movie Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <h2>Movies</h2>
@@ -10,7 +10,7 @@
     @foreach (var movie in Model.Movie)
     {
         <li>
-            <a href="/movies/display">@movie.Name</a>
+            <a href="/movies/Display/?movieId=@movie.Id">@movie.Name</a>
         </li>
     }
 </ul>
