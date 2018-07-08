@@ -15,7 +15,7 @@ namespace vidly.Controllers
         {
 
             //create a view Model Object
-            var viewModel = new RandomMovieViewModel
+            var viewModel = new IndexViewModel
             {
 
                 Customers = generateCustomers()
@@ -24,10 +24,10 @@ namespace vidly.Controllers
             return View(viewModel);
         }
 
-        public ViewResult Display(int id)
+        public ActionResult Display(int id)
         {
             var customers = generateCustomers();
-            Customer customer = null;
+            Customer customer = null;//declare a variable customer of type Customer
             foreach (var c in customers)
             {
                 if (c.Id == id)
@@ -36,7 +36,14 @@ namespace vidly.Controllers
                     break;
                 }
             }
-            return View(customer);
+            if (customer == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                return View(customer);
+            }
         }
 
         public List<Customer> generateCustomers()

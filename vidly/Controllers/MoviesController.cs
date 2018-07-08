@@ -19,7 +19,7 @@ namespace vidly.Controllers
         {
             //var movie = this.generateMovies();
             //create a view Model Object
-            var viewModel = new RandomMovieViewModel
+            var viewModel = new IndexViewModel
             {
 
                 Movie = generateMovies()
@@ -36,10 +36,10 @@ namespace vidly.Controllers
             //return RedirectToAction("Index", "Home", new { page = 1, sortBy = "name" });
         
 
-        public ViewResult Display(int movieId)
+        public ActionResult Display(int movieId)
         {
             var movies = generateMovies();
-            Movie movie = null;
+            Movie movie = null;//declare a variable of type Movie
             foreach (var m in movies)
             {
                 if (m.Id == movieId)
@@ -49,7 +49,14 @@ namespace vidly.Controllers
 
                 }
             }
-            return View(movie);
+            if (movie == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                return View(movie);
+            }
         }
 
         //example of a parameter embedded in the URL
