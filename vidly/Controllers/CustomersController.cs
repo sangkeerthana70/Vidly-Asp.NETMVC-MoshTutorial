@@ -27,8 +27,7 @@ namespace vidly.Controllers
         public ViewResult Index()
         {
 
-            //modified the code to initialize the customers variable using context.Customers which comes
-            //from the database
+            //modified the code to assign Customers(ViewModel) data to get data from  context.Customers in the database
 
             //create a view Model Object
             var viewModel = new IndexViewModel
