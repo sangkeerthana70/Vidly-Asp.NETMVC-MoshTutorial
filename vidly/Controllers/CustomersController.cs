@@ -8,20 +8,40 @@ using vidly.ViewModels;
 
 namespace vidly.Controllers
 {
+
     public class CustomersController : Controller
     {
+        //Db context to access the database
+        private  ApplicationDbContext context;
+        //initialize dbcontext in the constructor
+        public CustomersController()
+        {
+            context = new ApplicationDbContext();
+        }
+        //override the dispose method of the base controller class
+        protected override void Dispose(bool disposing)
+        {
+           context.Dispose();
+        }
         // GET: Customers
         public ViewResult Index()
         {
+
+            //modified the code to initialize the customers variable using context.Customers which comes
+            //from the database
 
             //create a view Model Object
             var viewModel = new IndexViewModel
             {
 
-                Customers = generateCustomers()
+                //Customers = generateCustomers()
+                Customers = context.Customers.ToList()
 
             };
             return View(viewModel);
+
+            
+            
         }
 
         public ActionResult Display(int id)

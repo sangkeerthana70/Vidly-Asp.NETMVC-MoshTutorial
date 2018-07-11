@@ -8,12 +8,15 @@
 <h2>Customers</h2>
 
 <ul>
-    @foreach (var customer in Model.Customers)
-    {
-        <li>
-            <a href="/customers/Display/@customer.Id">@customer.Name</a>
-        </li>
-    }
+
+    <li>
+        @foreach (var customer in Model.Customers)
+        {
+            
+                <a> href="/customers/Display/@customer.Id">@customer.Name</a>
+            
+        }
+    </li>
 </ul>
    
 
