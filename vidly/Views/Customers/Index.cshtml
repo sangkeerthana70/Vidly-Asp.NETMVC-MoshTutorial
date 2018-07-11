@@ -12,9 +12,11 @@
     <li>
         @foreach (var customer in Model.Customers)
         {
-            
-                <a> href="/customers/Display/@customer.Id">@customer.Name</a>
-            
+
+            @*@<a> href="/customers/Display/@customer.Id">@customer.Name</a>*@
+        <p>@Html.ActionLink(customer.Name, "Details", "Customers", new { id = customer.Id }, null)</p>
+        <p>@customer.MembershipType</p>
+
         }
     </li>
 </ul>
