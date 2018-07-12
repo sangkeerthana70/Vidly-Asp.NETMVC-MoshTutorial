@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -34,7 +35,7 @@ namespace vidly.Controllers
             {
 
                 //Customers = generateCustomers()
-                Customers = context.Customers.ToList()
+                Customers = context.Customers.Include(c => c.MembershipType).ToList()
 
             };
             return View(viewModel);
