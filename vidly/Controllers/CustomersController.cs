@@ -38,13 +38,11 @@ namespace vidly.Controllers
 
             };
             return View(viewModel);
-
-            
-            
         }
 
         public ActionResult Display(int id)
         {
+            /*Old code solution for SECTION-2
             var customers = generateCustomers();
             Customer customer = null;//declare a variable customer of type Customer
             foreach (var c in customers)
@@ -62,10 +60,16 @@ namespace vidly.Controllers
             else
             {
                 return View(customer);
-            }
+            }*/
+            var customer = context.Customers.SingleOrDefault(c => c.Id == id);
+
+            if (customer == null)
+                return HttpNotFound();
+
+            return View(customer);
         }
 
-        public List<Customer> generateCustomers()
+        /*public List<Customer> generateCustomers()
         {
             var customers = new List<Customer>
             {
@@ -79,6 +83,6 @@ namespace vidly.Controllers
             };
             return customers;
 
-        }
+        }*/
     }
 }
