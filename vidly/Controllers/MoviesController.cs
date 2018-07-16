@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -12,7 +13,18 @@ namespace vidly.Controllers
 {
     public class MoviesController : Controller
     {
+        //Db context to access the database
+        private ApplicationDbContext context;
+        //initialize dbcontext in the constructor
+        public MoviesController()
+        {
+            context = new ApplicationDbContext();
+        }
 
+        protected override void Dispose(bool disposing)
+        {
+            context.Dispose();
+        }
 
         // GET: Movies/Random
         public ViewResult Index()
@@ -22,22 +34,18 @@ namespace vidly.Controllers
             var viewModel = new IndexViewModel
             {
 
-                Movie = generateMovies()
+                //Movie = generateMovies()
+                Movie = context.Movie.Include(m => m.Genre).ToList()
 
             };
-            return View(viewModel);
+                return View(viewModel);
         }
 
 
-            //return new ViewResult();
-            //return Content("Hello World!");
-            //return HttpNotFound();
-            //return new EmptyResult();
-            //return RedirectToAction("Index", "Home", new { page = 1, sortBy = "name" });
-        
-
+        /*
+        //disable for now as it is old code
         public ActionResult Display(int movieId)
-        {
+        { 
             var movies = generateMovies();
             Movie movie = null;//declare a variable of type Movie
             foreach (var m in movies)
@@ -83,10 +91,7 @@ namespace vidly.Controllers
 
             };
             return movies;
-
-
-        }
-
+        } */
     }
 }
 //note: movies?pageIndex=1&sortBy=ReleaseDate can be given as a parameter in the URL to change the pageIndex and sortby Values for the last 
